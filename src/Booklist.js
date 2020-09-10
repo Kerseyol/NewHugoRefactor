@@ -10,6 +10,7 @@ class Booklist extends React.Component{
     constructor(props, context) {
         super(props, context);
     }
+
     
 
     render() {
@@ -36,8 +37,9 @@ class Booklist extends React.Component{
                       <p className="booklist-title">{book[0]}</p>
                       <p>{book[1]}</p>
                       <p>{book.id}</p>
-                      <button className="haveRead">Have Read Boolean Button</button>
-                    </Link>
+                      </Link>
+                      <button className="haveRead">Click if Read</button>
+                      <button className="wishlist-button">Add to Wishlist</button>
                   </li>
                 </ul>
                 </div>

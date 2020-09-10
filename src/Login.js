@@ -22,6 +22,7 @@ class Login extends React.Component {
         this.setState({
             userId: userId
         })
+        this.props.history.push(`/user/${userId}/home`)
     }
 
     render() {

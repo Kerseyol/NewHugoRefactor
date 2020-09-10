@@ -12,6 +12,7 @@ import Userlist from './Userlist';
 import Wishlist from './Wishlist';
 import firebase from './Firebase';
 import Bookdetails from './Bookdetails';
+import Logout from './Logout';
 
 class App extends React.Component {
   constructor(props, context) {
@@ -77,14 +78,22 @@ class App extends React.Component {
     return (
         <Router>
           <div className="mainPage">
-            <Navbar />
+            <Navbar 
+            userId={this.props.match.params.userId}
+            />
             <Header />
           </div>
           <Switch>
-          <Route path="/user/:userId/home" component={Home} />
-          <Route path="/user/:userId/about" component={About} />
-          <Route path="/user/:userId/wishlist" component={Wishlist} />
-          <Route path="/user/:userId/booklist/:bookId" component={Bookdetails} />
+          <Route 
+              path="/user/:userId/home" 
+              component={() => <Home booklist={this.state.booklist}
+              tagline={`Space Cadet ${this.props.match.params.userId}'s Hugo Adventure`}
+              userId={this.props.match.params.userId} 
+              />}
+              />
+          <Route path="/user/:userId/about" component={About} userId={this.props.match.params.userId} />
+          <Route path="/user/:userId/wishlist" component={Wishlist} userId={this.props.match.params.userId} />
+          <Route path="/user/:userId/booklist/:bookId" component={Bookdetails} userId={this.props.match.params.userId} />
           <Route
               path='/user/:userId/booklist'
               component={() => <Booklist booklist={this.state.booklist}
@@ -92,6 +101,7 @@ class App extends React.Component {
               userId={this.props.match.params.userId}
               />}
             />
+            <Route path="/logout" component={Logout} userId={this.props.match.params.userId} />
             </Switch>
           </Router>
           );

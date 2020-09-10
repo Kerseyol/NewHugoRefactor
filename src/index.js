@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch, Link, Redirect} from 'react-router-dom';
 import { Match, Miss } from 'react-router';
 import './index.css';
 import App from './App';
@@ -10,6 +10,7 @@ import NotFound from './NotFound';
 import About from './About';
 import Booklist from './Booklist';
 import Home from './Home';
+import Logout from './Logout';
 import {userContext} from './userContext';
 
 class Root extends React.Component {
@@ -27,10 +28,11 @@ class Root extends React.Component {
 <div>
   <Switch>
   <Route exact path="/" component={Login} />
-  <Route path="/user/:userId" component={App} />
+  <Route path="/user/:userId/" component={App} />
   <Route path="/user/:userId/home" component={Home} />
   <Route path="/user/:userId/about" component={About} />
   <Route path="/user/:userId/booklist" component={Booklist} />
+  <Route path="/:userId/logout/" component={Logout} />
   <Route component={NotFound} />
   </Switch>
   

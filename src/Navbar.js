@@ -8,32 +8,41 @@ import Booklist from './Booklist';
 import NotFound from './NotFound';
 
 
-const Navbar = () => {
-    
+class Navbar extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+    }
+
+    userId = this.props.userId
+
+    render() {
+    console.log(this.userId)
    return(  
+    <div>
     
     <nav>
         <ul>
             <li>
-                <Link to="/user/:userId/home">Home</Link>
+                <Link to={`/user/${this.userId}/home`}>Home</Link>
             </li>
             <li>
-                <Link to="/user/:userId/about">About</Link>
+                <Link to={`/user/${this.userId}/about`}>About</Link>
             </li>
             <li>
-                <Link to="/user/:userId/booklist">Book List</Link>
+                <Link to={`/user/${this.userId}/booklist`}>Book List</Link>
             </li>
             <li>
-                <Link to="/user/:userId/wishlist">Wish List</Link>
+                <Link to={`/user/${this.userId}/wishlist`}>Wish List</Link>
             </li>
             <li>
-                <Link to="/">Logout</Link>
+                <Link to={`/logout/`}>Logout</Link>
             </li>
         </ul>
     </nav>
-    
+    </div>
     
     )
+}
 }
  
 // <Router>
